@@ -1,326 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GHAZI PARFUMERIE | L'Art du Sillage</title>
-    <meta name="description" content="Votre signature. Votre sillage. Des fragrances choisies pour laisser une impression qui ne s'oublie pas.">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            light: '#ead7a8',
-                            DEFAULT: '#c8a35d',
-                            dark: '#8f6a31',
-                        },
-                        dark: {
-                            DEFAULT: '#0a0a09',
-                            paper: '#171411',
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['Manrope', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- GSAP for Smooth Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Remix Icon for Elegant Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #0a0a09;
-            color: #ffffff;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .hero-bg {
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(200, 163, 93, 0.15) 0%, transparent 60%),
-                url('./assets/images/ghazi-hero.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-overlay {
-            background: linear-gradient(to bottom, rgba(10,10,9,0.2) 0%, rgba(10,10,9,0.95) 100%);
-        }
-
-        /* Custom Elegant Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a09; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c8a35d; 
-            border-radius: 10px;
-        }
-
-        .btn-hover-effect {
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-hover-effect::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150%;
-            height: 150%;
-            background: rgba(255,255,255,0.1);
-            transform: translate(-50%, -50%) scale(0);
-            border-radius: 50%;
-            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .btn-hover-effect:hover::after {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, #ead7a8 0%, transparent 70%);
-            pointer-events: none;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#041b22">
+  <meta name="description" content="Ghazi Parfumerie — découvrez notre univers, contactez-nous et partagez votre avis.">
+  <title>Ghazi Parfumerie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="font-sans antialiased selection:bg-gold selection:text-dark">
+<body>
+  <main class="experience" id="experience">
+    <section class="screen hero" id="accueil" aria-labelledby="brand-title">
+      <img class="hero__image" src="assets/ghazi-hero.webp" alt="Ghazi Parfumerie présente le parfum Wood in Sea" fetchpriority="high">
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
 
-    <!-- Ambient Gold Particles -->
-    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+      <header class="hero__header">
+        <p class="eyebrow">Maison de parfumerie</p>
+        <h1 id="brand-title"><span>GHAZI</span> PARFUMERIE</h1>
+        <p class="signature">Le parfum qui raconte votre présence.</p>
+      </header>
 
-    <!-- Main Container (Mobile First design optimized for NFC Cards/Link in bio) -->
-    <main class="relative max-w-lg mx-auto bg-dark min-h-screen shadow-2xl shadow-gold/10 overflow-hidden z-10">
-        
-        <!-- Header -->
-        <header class="absolute top-0 w-full p-6 flex justify-between items-center z-50 gs-reveal">
-            <div class="flex items-center gap-4">
-                <div>
-                    <h1 class="font-serif text-lg tracking-widest text-white leading-tight">GHAZI</h1>
-                    <p class="text-[9px] tracking-[0.3em] text-gold-light uppercase mt-0.5">Parfumerie</p>
-                </div>
-            </div>
-        </header>
+      <div class="hero__actions" aria-label="Contact et réseaux sociaux">
+        <a class="review-spotlight" href="https://search.google.com/local/writereview?placeid=ChIJ-7TpV63Lpw0R70IQKupAEis" target="_blank" rel="noopener noreferrer" aria-label="Donner votre avis sur Google">
+          <span class="google-mark" aria-hidden="true">G</span>
+          <span><small>Votre expérience compte</small><strong>LAISSER UN AVIS GOOGLE</strong></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </a>
 
-        <!-- Hero Section -->
-        <section class="relative h-[85vh] flex flex-col justify-end p-8 hero-bg">
-            <div class="absolute inset-0 hero-overlay"></div>
-            
-            <div class="relative z-10 gs-hero-stagger">
-                <p class="text-gold font-bold text-[9px] tracking-[0.35em] uppercase mb-4 gs-hero-item">L'Art du Parfum</p>
-                <h2 class="font-serif text-5xl md:text-6xl text-white leading-[0.95] mb-5 gs-hero-item">
-                    Votre signature.<br>
-                    <span class="italic text-gold-light">Votre sillage.</span>
-                </h2>
-                <p class="text-gray-300 text-sm font-light mb-8 max-w-[280px] leading-relaxed gs-hero-item">
-                    Des fragrances choisies pour laisser une impression qui ne s'oublie pas.
-                </p>
-                
-                <div class="flex flex-col gap-4 gs-hero-item">
-                    <a href="#experience" class="btn-hover-effect bg-gold text-dark py-4 px-7 rounded-full font-bold text-[11px] uppercase tracking-wider flex items-center justify-between shadow-[0_0_20px_rgba(200,163,93,0.25)] transition-all hover:shadow-[0_0_30px_rgba(200,163,93,0.4)]">
-                        Découvrir l'univers
-                        <i class="ri-arrow-down-line text-lg bg-dark text-white rounded-full h-7 w-7 flex items-center justify-center"></i>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="absolute bottom-8 right-6 text-white/10 tracking-[0.4em] text-[8px] font-bold" style="writing-mode: vertical-rl;">
-                MAISON DE PARFUM
-            </div>
-        </section>
+        <nav class="social-grid" aria-label="Liens rapides">
+          <a class="social-link instagram" href="https://www.instagram.com/ghaziparfumerie12?stkn=NGFwOXpiYTk4eHNm" target="_blank" rel="noopener noreferrer" aria-label="Instagram Ghazi Parfumerie">
+            <span class="icon-shell"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle class="dot" cx="17.4" cy="6.7" r="1.1"/></svg></span><span>Instagram</span>
+          </a>
+          <a class="social-link tiktok" href="https://www.tiktok.com/@ghaziparfumerie12?_r=1&amp;_t=ZS-99dBFwByFnT" target="_blank" rel="noopener noreferrer" aria-label="TikTok Ghazi Parfumerie">
+            <span class="icon-shell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.3 4.1c.6 2.6 2.1 4.1 4.7 4.3v3.4c-1.8.1-3.4-.5-4.7-1.5v6.2a6.1 6.1 0 11-5.3-6.1v3.5a2.7 2.7 0 102 2.6V4.1h3.3z"/></svg></span><span>TikTok</span>
+          </a>
+          <a class="social-link facebook" href="https://www.facebook.com/share/1TwUn9fV5U/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook Ghazi Parfumerie">
+            <span class="icon-shell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H8v3h2.8v8h3.4z"/></svg></span><span>Facebook</span>
+          </a>
+          <a class="social-link whatsapp" href="https://wa.me/212707120095?text=Bonjour%20Ghazi%20Parfumerie%2C%20je%20souhaite%20avoir%20plus%20d%27informations." target="_blank" rel="noopener noreferrer" aria-label="Écrire à Ghazi Parfumerie sur WhatsApp">
+            <span class="icon-shell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.7 4.3A10 10 0 004 16.3L2.6 21.5l5.3-1.4A10 10 0 1019.7 4.3zm-7.6 15.1a8.2 8.2 0 01-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1115.2-4.3 8.2 8.2 0 01-8.2 8.2zm4.5-6.1c-.2-.1-1.5-.8-1.8-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.6.1a6.7 6.7 0 01-2-1.2 7.6 7.6 0 01-1.4-1.8c-.1-.2 0-.4.1-.5l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.2-.2-.4-.3-.6-.4z"/></svg></span><span>WhatsApp</span>
+          </a>
+          <a class="social-link phone" href="tel:+212707120095" aria-label="Appeler Ghazi Parfumerie au 07 07 12 00 95">
+            <span class="icon-shell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.7 2.8l3 4.5-2.2 2.1c1.1 2.4 2.9 4.2 5.3 5.3l2.1-2.2 4.5 3c.4.3.6.8.4 1.3l-1 3c-.2.6-.7 1-1.3 1C9.6 20.7 3.3 14.4 3.2 6.5c0-.6.4-1.1 1-1.3l3-1c.5-.2 1 .1 1.3.5z"/></svg></span><span>Appeler</span>
+          </a>
+          <a class="social-link maps" href="https://maps.app.goo.gl/k4gqeWoDKTqPgz5S8?g_st=iw" target="_blank" rel="noopener noreferrer" aria-label="Voir Ghazi Parfumerie sur Google Maps">
+            <span class="icon-shell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.7a7 7 0 00-7 7c0 5.1 7 11.6 7 11.6s7-6.5 7-11.6a7 7 0 00-7-7zm0 9.5a2.7 2.7 0 110-5.4 2.7 2.7 0 010 5.4z"/></svg></span><span>Localisation</span>
+          </a>
+        </nav>
+      </div>
 
-        <!-- Quick Actions Panel -->
-        <section class="px-2 -mt-8 relative z-20 gs-reveal">
-            <div class="glass-panel rounded-2xl p-2 flex justify-between items-center shadow-2xl backdrop-blur-xl">
-                <a href="https://wa.me/212707120095" target="_blank" class="flex-1 flex flex-col items-center justify-center py-3 rounded-xl hover:bg-white/5 transition-colors group text-center">
-                    <i class="ri-whatsapp-line text-xl text-green-400 mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                    <span class="text-[7.5px] font-bold text-white uppercase tracking-wider">WhatsApp</span>
-                </a>
-                <div class="w-[1px] h-8 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-                <a href="tel:0707120095" class="flex-1 flex flex-col items-center justify-center py-3 rounded-xl hover:bg-white/5 transition-colors group text-center">
-                    <i class="ri-phone-line text-xl text-gold mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                    <span class="text-[7.5px] font-bold text-white uppercase tracking-wider">Appeler</span>
-                </a>
-                <div class="w-[1px] h-8 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-                <a href="https://www.instagram.com/" target="_blank" class="flex-1 flex flex-col items-center justify-center py-3 rounded-xl hover:bg-white/5 transition-colors group text-center">
-                    <i class="ri-instagram-line text-xl text-pink-500 mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                    <span class="text-[7.5px] font-bold text-white uppercase tracking-wider">Insta</span>
-                </a>
-                <div class="w-[1px] h-8 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-                <a href="https://maps.app.goo.gl/ae2Z42G83WTtQLJK7?g_st=iw" target="_blank" class="flex-1 flex flex-col items-center justify-center py-3 rounded-xl hover:bg-white/5 transition-colors group text-center">
-                    <i class="ri-map-pin-line text-xl text-red-400 mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                    <span class="text-[7.5px] font-bold text-white uppercase tracking-wider">Boutique</span>
-                </a>
-                <div class="w-[1px] h-8 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-                <a href="https://search.google.com/local/writereview?placeid=ChIJ-7TpV63Lpw0R70IQKupAEis" target="_blank" class="flex-1 flex flex-col items-center justify-center py-3 rounded-xl hover:bg-white/5 transition-colors group text-center">
-                    <i class="ri-google-fill text-xl text-blue-400 mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                    <span class="text-[7.5px] font-bold text-white uppercase tracking-wider">Avis</span>
-                </a>
-            </div>
-        </section>
+      <a class="scroll-cue" href="#contact" aria-label="Découvrir la deuxième page"><span>Découvrir</span><i aria-hidden="true"></i></a>
+    </section>
 
-        <!-- The Experience Section -->
-        <section id="experience" class="py-24 px-8 relative z-10">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gold/5 rounded-full blur-[80px] pointer-events-none"></div>
-            
-            <div class="relative gs-reveal">
-                <p class="text-gold font-bold text-[10px] tracking-[0.35em] uppercase mb-5 text-center">L'Expérience</p>
-                <h2 class="font-serif text-4xl text-white text-center leading-tight mb-10">
-                    Un parfum ne se choisit pas.<br>
-                    <span class="italic text-gold-light">Il se reconnaît.</span>
-                </h2>
-                
-                <div class="glass-panel p-8 rounded-[32px] relative overflow-hidden shadow-lg border border-gold/10 bg-[#141210]/60">
-                    <div class="absolute -right-10 -top-16 font-serif text-[240px] text-white/[0.015] leading-none pointer-events-none select-none">
-                        G
-                    </div>
-                    
-                    <p class="text-gray-300 text-[13px] font-light leading-relaxed mb-8 relative z-10 text-center px-2">
-                        Besoin d'un conseil ? Contactez-nous directement. Nous vous orientons vers les notes adaptées à votre style et à votre personnalité.
-                    </p>
-                    
-                    <div class="flex justify-center relative z-10">
-                        <a href="https://wa.me/212707120095" target="_blank" class="btn-hover-effect bg-gold/10 border border-gold text-gold hover:bg-gold hover:text-dark px-7 py-3.5 rounded-full text-[10px] tracking-widest uppercase transition-all duration-500 flex items-center gap-2 font-bold group">
-                            Parler à un conseiller <i class="ri-arrow-right-line group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-        </section>
+    <section class="screen contact" id="contact" aria-labelledby="contact-title">
+      <div class="aura aura--one" aria-hidden="true"></div>
+      <div class="aura aura--two" aria-hidden="true"></div>
+      <div class="contact__inner">
+        <div class="monogram" aria-hidden="true"><span>G</span><i></i></div>
+        <p class="eyebrow">GHAZI PARFUMERIE</p>
+        <h2 id="contact-title">Trouvez le parfum<br><em>qui vous ressemble.</em></h2>
+        <p class="contact__lead">Conseil, découverte et sélection : échangez directement avec nous.</p>
 
-        <!-- Footer / Contact Section -->
-        <section class="bg-dark-paper border-t border-white/5 rounded-t-[40px] pt-16 pb-8 px-8 relative overflow-hidden gs-reveal mt-8">
-            <div class="absolute -right-24 -top-24 w-64 h-64 border border-gold/10 rounded-full blur-[1px]"></div>
-            
-            <p class="text-gold font-bold text-[10px] tracking-[0.3em] uppercase mb-4">Retrouvez-nous</p>
-            <h2 class="font-serif text-[42px] text-white leading-none mb-10">
-                Entrez dans<br>
-                <span class="italic text-gold-light">notre univers.</span>
-            </h2>
-            
-            <div class="space-y-3 relative z-10">
-                <a href="https://maps.app.goo.gl/ae2Z42G83WTtQLJK7?g_st=iw" target="_blank" class="flex items-center gap-4 bg-white/5 border border-white/5 p-4 rounded-2xl hover:bg-white/10 hover:border-gold/20 transition-all duration-300 group">
-                    <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center text-gold group-hover:scale-110 group-hover:bg-gold group-hover:text-dark transition-all duration-300">
-                        <i class="ri-map-pin-fill text-xl"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-white text-[11px] font-bold uppercase tracking-widest">Voir la boutique</h3>
-                        <p class="text-gray-400 text-xs mt-1">Casablanca</p>
-                    </div>
-                    <i class="ri-arrow-right-line text-gold text-xl group-hover:translate-x-1 transition-transform"></i>
-                </a>
+        <a class="primary-cta" href="https://wa.me/212707120095?text=Bonjour%20Ghazi%20Parfumerie%2C%20je%20cherche%20un%20parfum." target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.7 4.3A10 10 0 004 16.3L2.6 21.5l5.3-1.4A10 10 0 1019.7 4.3zm-7.6 15.1a8.2 8.2 0 01-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1115.2-4.3 8.2 8.2 0 01-8.2 8.2z"/></svg>
+          <span><small>Réponse directe</small><strong>ÉCRIRE SUR WHATSAPP</strong></span>
+          <b aria-hidden="true">↗</b>
+        </a>
 
-                <a href="https://www.instagram.com/" target="_blank" class="flex items-center gap-4 bg-white/5 border border-white/5 p-4 rounded-2xl hover:bg-white/10 hover:border-white/10 transition-all duration-300 group">
-                    <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-500 group-hover:scale-110 group-hover:bg-pink-500 group-hover:text-white transition-all duration-300">
-                        <i class="ri-instagram-line text-xl"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-white text-[11px] font-bold uppercase tracking-widest">Instagram</h3>
-                        <p class="text-gray-400 text-xs mt-1">@ghazi_parfumerie</p>
-                    </div>
-                    <i class="ri-arrow-right-up-line text-white/30 text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                </a>
-            </div>
-            
-            <footer class="mt-16 text-center text-gray-500 text-[9px] tracking-[0.25em] uppercase border-t border-white/10 pt-8">
-                &copy; <span id="year"></span> GHAZI PARFUMERIE<br>
-                <span class="text-[7px] text-gray-600 mt-2 block tracking-widest">L'Art du Sillage</span>
-            </footer>
-        </section>
+        <div class="contact-grid">
+          <a href="tel:+212707120095"><span class="mini-icon">☎</span><span><small>Téléphone</small><strong>07 07 12 00 95</strong></span></a>
+          <a href="https://maps.app.goo.gl/k4gqeWoDKTqPgz5S8?g_st=iw" target="_blank" rel="noopener noreferrer"><span class="mini-icon">⌖</span><span><small>Nous trouver</small><strong>Itinéraire Google Maps</strong></span></a>
+        </div>
 
-    </main>
+        <a class="review-card" href="https://search.google.com/local/writereview?placeid=ChIJ-7TpV63Lpw0R70IQKupAEis" target="_blank" rel="noopener noreferrer">
+          <span class="google-mark" aria-hidden="true">G</span>
+          <span><small>Vous êtes déjà venu ?</small><strong>PARTAGEZ VOTRE AVIS SUR GOOGLE</strong><span class="stars" aria-hidden="true">★★★★★</span></span>
+          <b aria-hidden="true">→</b>
+        </a>
 
-    <script>
-        // Update year dynamically
-        document.getElementById('year').textContent = new Date().getFullYear();
+        <footer><span>GHAZI PARFUMERIE</span><i></i><span>Votre signature olfactive</span></footer>
+      </div>
+    </section>
+  </main>
 
-        // Elegant ambient particles system
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 25;
+  <aside class="page-dots" aria-label="Navigation entre les deux pages">
+    <a class="is-active" href="#accueil" aria-label="Page 1 : accueil"><span></span></a>
+    <a href="#contact" aria-label="Page 2 : contact"><span></span></a>
+  </aside>
 
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            
-            const size = Math.random() * 5 + 1;
-            const x = Math.random() * 100;
-            const y = Math.random() * 100;
-            const duration = Math.random() * 25 + 15;
-            const delay = Math.random() * 5;
-            
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${x}vw`;
-            particle.style.top = `${y}vh`;
-            particle.style.opacity = Math.random() * 0.4 + 0.05;
-            
-            particlesContainer.appendChild(particle);
-            
-            gsap.to(particle, {
-                y: `-=${Math.random() * 150 + 50}`,
-                x: `+=${Math.random() * 80 - 40}`,
-                rotation: Math.random() * 360,
-                opacity: Math.random() * 0.2 + 0.1,
-                duration: duration,
-                delay: delay,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
-            });
-        }
-
-        // Initialize GSAP ScrollTrigger Animations
-        document.addEventListener("DOMContentLoaded", () => {
-            gsap.registerPlugin(ScrollTrigger);
-
-            // Hero content stagger animation on load
-            gsap.from(".gs-hero-item", {
-                y: 40,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: "power3.out",
-                delay: 0.3
-            });
-
-            // Scroll reveal for all other sections
-            const revealElements = document.querySelectorAll(".gs-reveal");
-            revealElements.forEach((el) => {
-                gsap.from(el, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 50,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: "power2.out"
-                });
-            });
-        });
-    </script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
