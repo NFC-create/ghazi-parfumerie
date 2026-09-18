@@ -260,6 +260,32 @@ svg { display: block; }
 .aura--one { width: 230px; height: 230px; top: -110px; right: -115px; border: 1px solid rgba(39,213,237,.25); box-shadow: inset 0 0 75px rgba(39,213,237,.08); }
 .aura--two { width: 180px; height: 180px; left: -110px; bottom: 40px; border: 1px solid rgba(216,175,104,.22); }
 .contact__inner { width: 100%; max-width: 470px; text-align: center; }
+.contact__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 18px;
+}
+.contact__logo {
+  width: clamp(150px, 43vw, 205px);
+  height: clamp(150px, 43vw, 205px);
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .62));
+}
+.contact h2.contact__quote {
+  margin: -5px 0 0;
+  color: #f7df9d;
+  font: 700 clamp(1.85rem, 8vw, 2.6rem)/1.15 "Aref Ruqaa", "Traditional Arabic", serif;
+  letter-spacing: .015em;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .9), 0 0 24px rgba(216, 175, 104, .35);
+}
+.contact__ornament {
+  width: 84px;
+  height: 1px;
+  margin-top: 7px;
+  background: linear-gradient(90deg, transparent, rgba(247, 223, 157, .9), transparent);
+  box-shadow: 0 0 9px rgba(216, 175, 104, .45);
+}
 .monogram { position: relative; display: grid; width: 48px; height: 48px; margin: 0 auto 10px; place-items: center; border: 1px solid rgba(216,175,104,.55); transform: rotate(45deg); }
 .monogram span { color: var(--gold); font: 400 1.65rem "Italiana", Georgia, serif; transform: rotate(-45deg); }
 .monogram i { position: absolute; inset: 5px; border: 1px solid rgba(39,213,237,.25); }
@@ -338,6 +364,9 @@ footer i { width: 3px; height: 3px; border-radius: 50%; background: var(--gold);
   .icon-shell { width: 25px; height: 25px; border-radius: 7px; }
   .icon-shell svg { width: 17px; height: 17px; }
   .contact h2 { font-size: clamp(1.85rem, 8.8vw, 2.6rem); }
+  .contact__brand { margin-bottom: 11px; }
+  .contact__logo { width: 118px; height: 118px; }
+  .contact h2.contact__quote { margin-top: -4px; font-size: 1.75rem; }
   .contact__lead { margin: 8px auto 11px; }
   .primary-cta { min-height: 56px; }
   .contact-grid > a { min-height: 59px; }

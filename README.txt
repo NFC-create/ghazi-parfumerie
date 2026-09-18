@@ -25,3 +25,4 @@ VERSION MODIFIÉE
 - Citation arabe ajoutée : لكل مقام عطر
 - Logo Ghazi Parfumerie ajouté sur la première page
 - Nouveau numéro WhatsApp et téléphone : +212 662-164177
+- Deuxième page simplifiée avec le logo et la citation arabe au-dessus des boutons
