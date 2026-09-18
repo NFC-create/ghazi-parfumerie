@@ -20,3 +20,8 @@ Puis ouvrez : http://localhost:5500
 
 Le site contient exactement deux écrans verticaux. Faites défiler vers le bas
 pour passer de l'accueil à la page de contact.
+
+VERSION MODIFIÉE
+- Citation arabe ajoutée : لكل مقام عطر
+- Logo Ghazi Parfumerie ajouté sur la première page
+- Nouveau numéro WhatsApp et téléphone : +212 662-164177
